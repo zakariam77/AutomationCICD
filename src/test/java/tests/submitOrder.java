@@ -19,7 +19,7 @@ public class submitOrder extends BaseTest{
     @Test(groups = {"buyTest"})
     public void simpleTest(){
         SoftAssert softAssert = new SoftAssert();
-        LandingPage landingPage = new LandingPage(driver);
+        LandingPage landingPage = new LandingPage(DriverManager.getDriver());
         Inventory inventory = landingPage.loginApp("standard_user", "secret_sauce");
         inventory.addProductToCart(productName);
         Cart cart = inventory.goToCart();
@@ -38,7 +38,7 @@ public class submitOrder extends BaseTest{
 
        SoftAssert softAssert = new SoftAssert();
        String pName = "Sauce Labs Bike Light";
-       LandingPage landingPage = new LandingPage(driver);
+        LandingPage landingPage = new LandingPage(DriverManager.getDriver());
        Inventory inventory  = landingPage.loginApp("standard_user", "secret_sauce");
        inventory.addProductToCart(pName);
        Cart cart = inventory.goToCart();
@@ -50,7 +50,7 @@ public class submitOrder extends BaseTest{
     @Test(dataProvider = "getData", groups = {"failLogin"})
     public void failLogin(HashMap<String, String> input) {
         SoftAssert softAssert = new SoftAssert();
-        LandingPage landingPage = new LandingPage(driver);
+        LandingPage landingPage = new LandingPage(DriverManager.getDriver());
         landingPage.loginApp(input.get("name"), input.get("last"));
         softAssert.assertEquals(landingPage.getErrorMsg(), "cEpic sadface: Username and password do not match any user in this service");
         softAssert.assertAll();
