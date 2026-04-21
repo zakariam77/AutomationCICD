@@ -14,7 +14,6 @@ public class BaseTest {
 
     @BeforeMethod(alwaysRun = true)
     public void launchApplication(Method method) {
-        System.out.println(method.getName() + " test starting");
         WebDriver driver = DriverFactory.setUp();
         DriverManager.setDriver(driver);
         driver.get(ConfigReader.getProperty("url"));
