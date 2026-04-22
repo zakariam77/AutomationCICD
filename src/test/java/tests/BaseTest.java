@@ -7,13 +7,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import utils.ConfigReader;
 
-import java.lang.reflect.Method;
-
-
 public class BaseTest {
 
     @BeforeMethod(alwaysRun = true)
-    public void launchApplication(Method method) {
+    public void launchApplication() {
         WebDriver driver = DriverFactory.setUp();
         DriverManager.setDriver(driver);
         driver.get(ConfigReader.getProperty("url"));
@@ -23,7 +20,6 @@ public class BaseTest {
     public void tearDown(){
         DriverManager.removeDriver();
     }
-
 
 
 }

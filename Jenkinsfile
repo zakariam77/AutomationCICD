@@ -1,38 +1,24 @@
-pipeline{
+pipeline
     agent any
-   parameters {
-       String(name: 'saucedemoTests'},
-       defaultValue: 'testing.xml', description: 'testing.xml')
+
+
+    tools {
+        maven 'Maven3'
     }
+
+
+
     stages {
-    stage('initialize') {
-        steps {
-            echo "Preparing to run: ${params.saucedemoTests}"
-            sh 'mvn -version'
+        stage('checkout') {
+            mvn clean compile
+
         }
-    }
-    stage('Checkout'){
-        steps {
-            checkout scm
+        stage('run tests') {
+            mvn test -PRegression Dbrowser=chrome
         }
-    }
-    stage('Execution') {
-        steps {
-        sh "mvn clean test -DsuiteXmlFile=${params.saucedemoTests}"
+        post {
+
+        }{
+
         }
-    }
-    post{
-        failure {
-            echo 'test failes'
-    }
-
-    }
-
-
-
-
-
-    }
-
-
-  }
+}
