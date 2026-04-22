@@ -43,7 +43,7 @@ public class submitOrder extends BaseTest{
        inventory.addProductToCart(pName);
        Cart cart = inventory.goToCart();
        String productInCart = cart.verifyProductInCart(pName);
-       softAssert.assertEquals(productInCart, "fake name");
+       softAssert.assertEquals(productInCart, pName);
        softAssert.assertAll();
     }
 
@@ -52,7 +52,7 @@ public class submitOrder extends BaseTest{
         SoftAssert softAssert = new SoftAssert();
         LandingPage landingPage = new LandingPage(DriverManager.getDriver());
         landingPage.loginApp(input.get("name"), input.get("last"));
-        softAssert.assertEquals(landingPage.getErrorMsg(), "cEpic sadface: Username and password do not match any user in this service");
+        softAssert.assertEquals(landingPage.getErrorMsg(), "Epic sadface: Username and password do not match any user in this service");
         softAssert.assertAll();
     }
 
