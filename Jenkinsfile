@@ -10,13 +10,13 @@ pipeline{
 
 
     stages {
-        stage('checkout') {
+        stage('Checkout') {
            steps {
                 git 'https://github.com/zakariam77/AutomationCICD.git'
             }
 
         }
-        stage('build') {
+        stage('Build') {
         steps {
                 sh 'mvn clean compile'
         }
