@@ -5,17 +5,12 @@ pipeline{
     tools {
         maven '3.9.14'
         jdk 'JDK25'
+        git 'default'
     }
 
 
 
     stages {
-        stage('Checkout') {
-           steps {
-                git 'https://github.com/zakariam77/AutomationCICD.git'
-            }
-
-        }
         stage('Build') {
         steps {
                 sh 'mvn clean compile'
