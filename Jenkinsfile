@@ -12,7 +12,7 @@ pipeline{
     stages {
         stage('Build') {
         steps {
-                bat 'nvm clean compile'
+                bat 'mvn clean compile'
 
         }
         }
@@ -21,7 +21,7 @@ pipeline{
 
         stage('Run tests') {
             steps {
-                        bat 'nvm -PRegression -Dbrowser=chrome'
+                        bat 'mvn -PRegression -Dbrowser=chrome'
 
             }
         }
