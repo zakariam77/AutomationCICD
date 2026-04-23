@@ -21,7 +21,7 @@ pipeline{
 
         stage('Run tests') {
             steps {
-                        bat 'mvn -PRegression -Dbrowser=chrome'
+                        bat 'mvn -PErrorValidation -Dbrowser=chrome'
 
             }
         }
