@@ -30,6 +30,7 @@ pipeline{
     post {
     always {
             junit '**/target/surefire-reports/*.xml'
+            allure results: [[path: 'target/allure-results']]
     }
 
     success {
