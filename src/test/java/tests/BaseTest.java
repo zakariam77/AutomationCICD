@@ -16,7 +16,6 @@ public class BaseTest {
         driver.get(ConfigReader.getProperty("url"));
     }
     @AfterMethod(alwaysRun = true)
-    //review
     public void tearDown(){
         DriverManager.removeDriver();
     }
