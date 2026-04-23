@@ -12,14 +12,26 @@ pipeline{
     stages {
         stage('Build') {
         steps {
-                sh 'mvn clean compile'
+        if(isUnix()){
+                        sh 'mvn clean compile'
+
+        }
+        else{
+        bat 'nvm clean compile'
+        }
         }
         }
 
 
         stage('Run tests') {
             steps {
-                sh 'mvn test -PRegression -Dbrowser=chrome'
+            if(isUnix()){
+                            sh 'mvn test -PRegression -Dbrowser=chrome'
+
+            }
+            else{
+            bat 'nvm -PRegression -Dbrowser=chrome'
+            }
             }
         }
 
