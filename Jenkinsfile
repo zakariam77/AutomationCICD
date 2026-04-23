@@ -1,24 +1,44 @@
-pipeline
+pipeline{
     agent any
 
 
     tools {
-        maven 'Maven3'
+        maven '3.9.14'
+        jdk 'JDK25'
     }
 
 
 
     stages {
         stage('checkout') {
-            mvn clean compile
+           steps {
+                git 'https://github.com/zakariam77/AutomationCICD.git'
+            }
 
         }
-        stage('run tests') {
-            mvn test -PRegression Dbrowser=chrome
+        stage('build') {
+        steps {
+                sh 'mvn clean compile'
         }
-        post {
-
-        }{
-
         }
+
+
+        stage('Run tests') {
+            steps {
+                sh 'mvn test -PRegression -Dbrowser=chrome'
+            }
+        }
+
+    }
+    post {
+
+
+    success {
+        echo 'test success'
+    }
+    failure {
+        echo 'test failed'
+        }
+    }
+
 }
