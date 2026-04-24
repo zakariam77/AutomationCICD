@@ -6,9 +6,6 @@ pipeline{
         maven '3.9.14'
         jdk 'JDK25'
     }
-
-
-
     stages {
         stage('Build') {
         steps {
@@ -16,9 +13,6 @@ pipeline{
 
         }
         }
-
-
-
         stage('Run tests') {
             steps {
                         bat 'mvn -PRegression -Dbrowser=chromeheadless'

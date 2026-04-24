@@ -10,6 +10,7 @@ import pages.*;
 import utils.JsonUtil;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 
@@ -63,5 +64,57 @@ public class submitOrder extends BaseTest{
         return new Object[][] {{data.get(0)}, {data.get(1)}};
     }
 
+    @Test
+    public void test3(Method mehtod){
+        System.out.println(mehtod.getName());
+    }
+    @Test
+    public void test4(Method mehtod){
+        System.out.println(mehtod.getName());
+    }
+    @Test
+    public void test5(Method mehtod){
+        System.out.println(mehtod.getName());
+    }
+    @Test
+    public void test6(Method mehtod){
+        System.out.println(mehtod.getName());
+    }
+    @Test
+    public void test7(Method mehtod){
+        System.out.println(mehtod.getName());
+    }
+    @Test
+    public void test8(Method mehtod){
+        System.out.println(mehtod.getName());
+    }
+    @Test
+    public void test9(Method mehtod){
+        System.out.println(mehtod.getName());
+    }
+    @Test
+    public void test10(Method mehtod){
+        System.out.println(mehtod.getName());
+    }@Test
+    public void test11(Method mehtod){
+        System.out.println(mehtod.getName());
+    }
+    @Test
+    public void test12(Method mehtod){
+        System.out.println(mehtod.getName());
+    }
+    @Test
+    public void test14(Method mehtod){
+        System.out.println(mehtod.getName());
+    }
+    @Test
+    public void test15(Method mehtod){
+        System.out.println(mehtod.getName());
+    }
+    @Test
+    public void test16(Method mehtod){
+        System.out.println(mehtod.getName());
+    }
 
+    
 }
