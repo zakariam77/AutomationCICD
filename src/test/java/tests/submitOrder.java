@@ -1,34 +1,53 @@
 package tests;
 
-import Listeners.Retry;
 import driver.DriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.Assertion;
 import org.testng.asserts.SoftAssert;
 import pages.*;
-import utils.JsonUtil;
+import utils.ConfigReader;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class submitOrder extends BaseTest{
+
+    static Logger logger = LogManager.getLogger(submitOrder.class);
+
     String productName = "Sauce Labs Onesie";
 
     @Test(groups = {"buyTest"})
     public void simpleTest(){
+        String testUsername = ConfigReader.getProperty("testUsername");
+        String testPassword = ConfigReader.getProperty("testPassword");
+
         SoftAssert softAssert = new SoftAssert();
         LandingPage landingPage = new LandingPage(DriverManager.getDriver());
-        Inventory inventory = landingPage.loginApp("standard_user", "secret_sauce");
+        logger.info("logging to application with username: {}", testUsername);
+        Inventory inventory = landingPage.loginApp(testUsername, testPassword);
+        logger.info("adding product to cart: {} ",productName );
         inventory.addProductToCart(productName);
+        logger.info("go to cart");
         Cart cart = inventory.goToCart();
+        logger.info("verifying product in cart");
         String actual = cart.verifyProductInCart(productName);
         Assert.assertEquals(actual, productName);
+        logger.info("go to checkout");
         Checkout checkout = cart.goToCheckout();
+        logger.info("filling shipping details and submitting order");
         checkout.fillShipping();
         CheckoutOverview checkoutOverview = checkout.submitOrder();
+        logger.info("finish order");
         Confirmation confirmation = checkoutOverview.finishOrder();
         softAssert.assertEquals(confirmation.getFinalMessage(), "Thank you for your order!");
         softAssert.assertAll();
@@ -39,34 +58,39 @@ public class submitOrder extends BaseTest{
 
        SoftAssert softAssert = new SoftAssert();
        String pName = "Sauce Labs Bike Light";
-        LandingPage landingPage = new LandingPage(DriverManager.getDriver());
+       LandingPage landingPage = new LandingPage(DriverManager.getDriver());
        Inventory inventory  = landingPage.loginApp("standard_user", "secret_sauce");
        inventory.addProductToCart(pName);
        Cart cart = inventory.goToCart();
        String productInCart = cart.verifyProductInCart(pName);
-       softAssert.assertEquals(productInCart, "fake name");
+       softAssert.assertEquals(productInCart, pName);
        softAssert.assertAll();
     }
-    //f
     @Test(dataProvider = "getData", groups = {"failLogin"})
-    public void failLogin(HashMap<String, String> input) {
+    public void failLogin(String username, String password) {
         SoftAssert softAssert = new SoftAssert();
         LandingPage landingPage = new LandingPage(DriverManager.getDriver());
-        landingPage.loginApp(input.get("name"), input.get("last"));
+        landingPage.loginApp(username, password);
         softAssert.assertEquals(landingPage.getErrorMsg(), "mEpic sadface: Username and password do not match any user in this service");
         softAssert.assertAll();
     }
 
+
     @DataProvider
-    public Object[][] getData() throws IOException {
-
-        List<HashMap<String, String>> data = JsonUtil.getDataJson(System.getProperty("user.dir") + "/src/test/java/files/testData.json");
-        return new Object[][] {{data.get(0)}, {data.get(1)}};
-    }
-
-    @Test
-    public void test3(Method mehtod){
-        System.out.println(mehtod.getName());
+    public Iterator<Object[]> getData() throws IOException, SQLException {
+        String DB_password = System.getenv("DB_PASSWORD");
+        String DB_user = "root";
+        String DB_url = "jdbc:mysql://localhost:3306/testdb";
+        List<Object[]> dataList = new ArrayList<>();
+        Connection connection = java.sql.DriverManager.getConnection(DB_url, DB_user, DB_password);
+        Statement statement = connection.createStatement();
+        ResultSet rs =  statement.executeQuery("select username, userpass from testingdata");
+        while(rs.next()){
+            String username = rs.getString("username");
+            String password = rs.getString("userpass");
+            dataList.add(new Object[] {username, password});
+        }
+        return dataList.iterator();
     }
 
 

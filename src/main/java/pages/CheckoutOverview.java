@@ -16,7 +16,6 @@ public class CheckoutOverview extends AbstractComponents {
     WebElement finishBtn;
 
     public Confirmation finishOrder(){
-        ReportManager.getTest().info("clicking finish...");
         finishBtn.click();
         return new Confirmation(driver);
     }

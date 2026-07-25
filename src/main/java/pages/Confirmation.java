@@ -16,7 +16,6 @@ public class Confirmation extends AbstractComponents {
     WebElement finalMessage;
 
     public String getFinalMessage() {
-        ReportManager.getTest().info("getting final message");
         return finalMessage.getText();
     }
 }

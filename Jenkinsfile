@@ -1,38 +1,55 @@
-pipeline{
-    agent any
+pipeline {
 
-
-    tools {
-        maven '3.9.14'
-        jdk 'JDK25'
-    }
-    stages {
-        stage('Build') {
-        steps {
-                bat 'mvn clean compile'
-
+       agent any
+       tools{
+            maven '3.6.3'
+            jdk 'JDK21'
+       }
+       environment {
+        COMPOSE_FILE = 'docker-compose.yaml'
+        DB_PASSWORD = credentials('DB-PASSWORD2')
         }
+       parameters {
+            string(name: 'PROFILE', defaultValue: 'ErrorValidation', description: 'ErrorValidation/Regression')
+            string(name: 'BROWSER', defaultValue: 'chrome', description: 'chrome/firefox')
+       }
+        stages{
+        stage('closing exisiting compose enviroment'){
+            steps{
+                echo 'closing any existing enviroment'
+                sh "docker compose -f ${env.COMPOSE_FILE} down"
+            }
         }
-        stage('Run tests') {
-            steps {
-                        bat 'mvn -PRegression -Dbrowser=chromeheadless'
-
+        stage('starting up new docker enviroment'){
+            steps{
+                echo 'staring up docker enviroment'
+                sh "docker compose -f ${env.COMPOSE_FILE} up -d --wait"
+                sh 'docker compose ps'
             }
         }
 
-    }
-    post {
-    always {
-            junit '**/target/surefire-reports/*.xml'
-            allure results: [[path: 'target/allure-results']]
-    }
-
-    success {
-        echo 'test success'
-    }
-    failure {
-        echo 'test failed'
+        stage('run tests'){
+            steps{
+                sh "mvn clean test -P${params.PROFILE} -Dbrowser=${params.BROWSER}"
+            }
         }
-    }
+        }
+
+        post{
+
+        always{
+            echo 'closing docker enviroment'
+            sh "docker compose -f ${env.COMPOSE_FILE} down -v"
+            junit '**/target/surfire-reports/test-*.xml'
+            allure results: [[path : 'target/allure-results']]
+        }
+        success{
+            echo 'build success'
+        }
+        failure {
+            echo 'build failure'
+        }
+
+        }
 
 }

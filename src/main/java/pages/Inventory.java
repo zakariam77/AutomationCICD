@@ -32,7 +32,6 @@ public class Inventory extends AbstractComponents {
                 .orElse(null);
     }
     public void addProductToCart(String productName){
-        ReportManager.getTest().info("adding product to cart...");
         WebElement product = getProduct(productName);
 
         if(product == null){

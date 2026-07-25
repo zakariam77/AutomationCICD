@@ -6,21 +6,25 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import utils.ConfigReader;
 
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class DriverFactory {
 
-    public static WebDriver setUp() {
+    public static WebDriver setUp() throws URISyntaxException, MalformedURLException {
         WebDriver driver;
         String browserType = System.getProperty("browser") != null ?
                         System.getProperty("browser") : ConfigReader.getProperty("browser");
 
         switch (browserType.toLowerCase()){
-            case String b when b.contains("chrome") : {
+            case "chrome" : {
                 ChromeOptions options = new ChromeOptions();
 
                 // disable weak password detection
@@ -31,17 +35,19 @@ public class DriverFactory {
                 options.setExperimentalOption("prefs", prefs);
                 //
 
-                if(browserType.contains("headless")){
-                    options.addArguments("--headless");
+                options.addArguments("--headless");
+                        driver = new RemoteWebDriver(new URI("http://localhost:4444").toURL(), options);
+                        driver.manage().window().setSize(new Dimension(1440, 900));
                 }
-                driver = new ChromeDriver(options);
+                break;
+            case "firefox" : {
+                FirefoxOptions options = new FirefoxOptions();
+                options.addArguments("--headless");
+                driver = new RemoteWebDriver(new URI("http://localhost:4444").toURL(), options);
                 driver.manage().window().setSize(new Dimension(1440, 900));
             }
                 break;
-            case "firefox" : driver = new FirefoxDriver();
-                break;
-            case "edge" : driver = new EdgeDriver();
-                break;
+
             default : throw new RuntimeException("browser not supported: " + browserType);
         }
         return driver;

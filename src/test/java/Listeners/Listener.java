@@ -1,5 +1,6 @@
 package Listeners;
 import driver.DriverManager;
+import io.qameta.allure.Allure;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -10,6 +11,7 @@ import org.testng.ITestResult;
 import reports.ReportManager;
 import utils.ScreenshotUtils;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -19,40 +21,24 @@ public class Listener implements ITestListener {
 
 
     @Override
-    public void onTestStart(ITestResult result) {
-        ReportManager.setTest(ReportManager.getExtent().createTest(result.getMethod().getMethodName()));
-    }
-
-    @Override
-    public void onTestSuccess(ITestResult result) {
-        ReportManager.getTest().pass("test passed");
-    }
-
-    @Override
     public void onTestFailure(ITestResult result) {
-        ReportManager.getTest().fail(result.getThrowable());
         WebDriver driver = DriverManager.getDriver();
             if(driver != null){
-                String screenshotPath = ScreenshotUtils.getScreenshot(driver, result.getMethod().getMethodName());
-                ReportManager.getTest().addScreenCaptureFromPath(screenshotPath);
+                byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+
+                String timeStamp = new SimpleDateFormat("ddMMyyy_HHmmss").format(new Date());
+                String folderPath = System.getProperty("user.dir") + File.separator + "screenshots";
+                String fileName = result.getTestName() + "_" + timeStamp + ".png";
+                String fullPath = folderPath + File.separator + fileName;
+
+                Allure.addAttachment(fullPath, new ByteArrayInputStream(screenshot));
             }
             else{
                 System.out.println("driver null, no screenshot" + result.getName());
             }
 
-        }
-
-    @Override
-    public void onTestSkipped(ITestResult result) {
-        ReportManager.getTest().skip("test skipped");
     }
 
-    @Override
-    public void onFinish(ITestContext context) {
-        ReportManager.getExtent().flush();
-        ReportManager.unload();
-
-    }
 
 
 

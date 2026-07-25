@@ -19,7 +19,6 @@ public class AbstractComponents {
     WebElement cartButton;
 
     public Cart goToCart(){
-        ReportManager.getTest().info("going to cart...");
         cartButton.click();
         return new Cart(driver);
     }

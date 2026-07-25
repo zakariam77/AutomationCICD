@@ -27,7 +27,6 @@ public class Cart extends AbstractComponents {
                 .findFirst().orElse(null).getText();
     }
     public Checkout goToCheckout(){
-        ReportManager.getTest().info("going to checkout...");
         checkoutBtn.click();
         return new Checkout(driver);
     }

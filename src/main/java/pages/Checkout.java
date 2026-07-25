@@ -34,7 +34,6 @@ public class Checkout extends AbstractComponents {
 
     }
     public CheckoutOverview submitOrder(){
-        ReportManager.getTest().info("clicking continue...");
         continueBtn.click();
         return new CheckoutOverview(driver);
     }
