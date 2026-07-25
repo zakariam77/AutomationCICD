@@ -22,7 +22,7 @@ public class DriverFactory {
         WebDriver driver;
         String browserType = System.getProperty("browser") != null ?
                         System.getProperty("browser") : ConfigReader.getProperty("browser");
-
+        String grid_URL = ConfigReader.getProperty("grid_URL");
         switch (browserType.toLowerCase()){
             case "chrome" : {
                 ChromeOptions options = new ChromeOptions();
@@ -43,7 +43,7 @@ public class DriverFactory {
             case "firefox" : {
                 FirefoxOptions options = new FirefoxOptions();
                 options.addArguments("--headless");
-                driver = new RemoteWebDriver(new URI("http://localhost:4444").toURL(), options);
+                driver = new RemoteWebDriver(new URI(grid_URL).toURL(), options);
                 driver.manage().window().setSize(new Dimension(1440, 900));
             }
                 break;
