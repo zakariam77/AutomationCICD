@@ -21,7 +21,7 @@ services:
 
   chrome:
     image: selenium/node-chromium:nightly
-    platform: linux/amd64
+    platform: linux/aarch64
     shm_size: 2gb
     depends_on:
       - selenium-hub
@@ -30,6 +30,7 @@ services:
 
   firefox:
     image: selenium/node-firefox:beta
+    platform: linux/aarch64
     shm_size: 2gb
     depends_on:
       - selenium-hub
