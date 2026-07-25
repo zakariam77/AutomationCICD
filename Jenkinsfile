@@ -40,7 +40,7 @@ pipeline {
         always{
             echo 'closing docker enviroment'
             sh "docker compose -f ${env.COMPOSE_FILE} down -v"
-            junit allowEmptyResults: true, testresults: '**/target/surfire-reports/TEST-*.xml'
+            junit allowEmptyResults: true, testResults: '**/target/surfire-reports/TEST-*.xml'
             allure results: [[path : 'target/allure-results']]
         }
         success{
