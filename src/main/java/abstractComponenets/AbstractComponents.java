@@ -5,8 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pages.Cart;
-import reports.ReportManager;
-
 public class AbstractComponents {
     protected WebDriver driver;
     public AbstractComponents(WebDriver driver){
