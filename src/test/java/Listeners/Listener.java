@@ -31,10 +31,6 @@ public class Listener implements ITestListener {
 
                 Allure.addAttachment(fileName, new ByteArrayInputStream(screenshot));
             }
-            else{
-                System.out.println("driver null, no screenshot" + result.getName());
-            }
-
     }
 
 

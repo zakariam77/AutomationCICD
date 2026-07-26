@@ -30,7 +30,9 @@ pipeline {
 
         stage('run tests'){
             steps{
+            ansiColor('xterm'){
                 sh "mvn clean test -P${params.PROFILE} -Dbrowser=${params.BROWSER}"
+                }
             }
         }
         }
