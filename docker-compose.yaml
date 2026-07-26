@@ -1,7 +1,6 @@
 services:
   selenium-hub:
     image: selenium/hub:latest
-    platform: linux/aarch64
     container_name: selenium-hub
     ports:
       - "4442:4442"
@@ -30,7 +29,6 @@ services:
 
   firefox:
     image: selenium/node-firefox:beta
-    platform: linux/aarch64
     shm_size: 2gb
     depends_on:
       - selenium-hub
