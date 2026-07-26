@@ -1,5 +1,6 @@
 package tests;
 
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import driver.DriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -78,7 +79,13 @@ public class submitOrder extends BaseTest{
         String DB_user = "root";
         String DB_url = "jdbc:mysql://localhost:3306/testdb";
         List<Object[]> dataList = new ArrayList<>();
-        Connection connection = java.sql.DriverManager.getConnection(DB_url, DB_user, DB_password);
+        Connection connection = null;
+        try {
+            connection = java.sql.DriverManager.getConnection(DB_url, DB_user, DB_password);
+        }catch (CommunicationsException e){
+            System.out.println(e.getMessage());
+        }
+
         Statement statement = connection.createStatement();
         ResultSet rs =  statement.executeQuery("select username, userpass from testingdata");
         while(rs.next()){
