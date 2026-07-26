@@ -27,11 +27,9 @@ public class Listener implements ITestListener {
                 byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 
                 String timeStamp = new SimpleDateFormat("ddMMyyy_HHmmss").format(new Date());
-                String folderPath = System.getProperty("user.dir") + File.separator + "screenshots";
-                String fileName = result.getTestName() + "_" + timeStamp + ".png";
-                String fullPath = folderPath + File.separator + fileName;
+                String fileName = result.getMethod().getMethodName() + "_" + timeStamp + ".png";
 
-                Allure.addAttachment(fullPath, new ByteArrayInputStream(screenshot));
+                Allure.addAttachment(fileName, new ByteArrayInputStream(screenshot));
             }
             else{
                 System.out.println("driver null, no screenshot" + result.getName());
