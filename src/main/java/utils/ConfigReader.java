@@ -7,9 +7,10 @@ import java.util.Properties;
 public class ConfigReader {
 
     static Properties prop;
+    private static String propertyFile = System.getProperty("user.dir") + "/src/main/resources/global.properties";
     static {
         try{
-            FileInputStream inputStream = new FileInputStream(System.getProperty("user.dir") + "/src/main/resources/global.properties");
+            FileInputStream inputStream = new FileInputStream(propertyFile);
             prop = new Properties();
             prop.load(inputStream);
 
