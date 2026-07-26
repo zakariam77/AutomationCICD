@@ -1,7 +1,6 @@
 package tests;
 
-import com.mysql.cj.jdbc.exceptions.CommunicationsException;
-import driver.DriverManager;
+import driver.DriverManage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
@@ -29,7 +28,7 @@ public class submitOrder extends BaseTest{
         String testPassword = ConfigReader.getProperty("testPassword");
 
         SoftAssert softAssert = new SoftAssert();
-        LandingPage landingPage = new LandingPage(DriverManager.getDriver());
+        LandingPage landingPage = new LandingPage(DriverManage.getDriver());
         logger.info("logging to application with username: {}", testUsername);
         Inventory inventory = landingPage.loginApp(testUsername, testPassword);
         logger.info("adding product to cart: {} ",productName );
@@ -55,7 +54,7 @@ public class submitOrder extends BaseTest{
 
        SoftAssert softAssert = new SoftAssert();
        String pName = "Sauce Labs Bike Light";
-       LandingPage landingPage = new LandingPage(DriverManager.getDriver());
+       LandingPage landingPage = new LandingPage(DriverManage.getDriver());
        Inventory inventory  = landingPage.loginApp("standard_user", "secret_sauce");
        inventory.addProductToCart(pName);
        Cart cart = inventory.goToCart();
@@ -66,7 +65,7 @@ public class submitOrder extends BaseTest{
     @Test(dataProvider = "getData", groups = {"failLogin"})
     public void failLogin(String username, String password) {
         SoftAssert softAssert = new SoftAssert();
-        LandingPage landingPage = new LandingPage(DriverManager.getDriver());
+        LandingPage landingPage = new LandingPage(DriverManage.getDriver());
         landingPage.loginApp(username, password);
         softAssert.assertEquals(landingPage.getErrorMsg(), "mEpic sadface: Username and password do not match any user in this service");
         softAssert.assertAll();
@@ -79,12 +78,8 @@ public class submitOrder extends BaseTest{
         String DB_user = "root";
         String DB_url = "jdbc:mysql://localhost:3306/testdb";
         List<Object[]> dataList = new ArrayList<>();
-        Connection connection = null;
-        try {
-            connection = java.sql.DriverManager.getConnection(DB_url, DB_user, DB_password);
-        }catch (CommunicationsException e){
-            System.out.println(e.getMessage());
-        }
+
+         Connection connection = DriverManager.getConnection(DB_url, DB_user, DB_password);
 
         Statement statement = connection.createStatement();
         ResultSet rs =  statement.executeQuery("select username, userpass from testingdata");

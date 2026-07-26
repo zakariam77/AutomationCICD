@@ -1,6 +1,6 @@
 package Listeners;
 
-import driver.DriverManager;
+import driver.DriverManage;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -17,7 +17,7 @@ public class Listener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        WebDriver driver = DriverManager.getDriver();
+        WebDriver driver = DriverManage.getDriver();
             if(driver != null){
                 byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 

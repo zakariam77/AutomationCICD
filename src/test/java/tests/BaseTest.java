@@ -1,7 +1,7 @@
 package tests;
 
 import driver.DriverFactory;
-import driver.DriverManager;
+import driver.DriverManage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -15,12 +15,12 @@ public class BaseTest {
     @BeforeMethod(alwaysRun = true)
     public void launchApplication() throws MalformedURLException, URISyntaxException {
         WebDriver driver = DriverFactory.setUp();
-        DriverManager.setDriver(driver);
+        DriverManage.setDriver(driver);
         driver.get(ConfigReader.getProperty("url"));
     }
     @AfterMethod(alwaysRun = true)
     public void tearDown(){
-        DriverManager.removeDriver();
+        DriverManage.removeDriver();
     }
 
 
