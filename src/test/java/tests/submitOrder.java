@@ -6,17 +6,13 @@ import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
 import org.testng.asserts.SoftAssert;
 import pages.*;
 import utils.ConfigReader;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
+import java.sql.*;
 import java.util.Iterator;
 import java.util.List;
 
