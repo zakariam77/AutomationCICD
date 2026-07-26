@@ -67,7 +67,7 @@ public class submitOrder extends BaseTest{
         SoftAssert softAssert = new SoftAssert();
         LandingPage landingPage = new LandingPage(DriverManage.getDriver());
         landingPage.loginApp(username, password);
-        softAssert.assertEquals(landingPage.getErrorMsg(), "mEpic sadface: Username and password do not match any user in this service");
+        softAssert.assertEquals(landingPage.getErrorMsg(), "Epic sadface: Username and password do not match any user in this service");
         softAssert.assertAll();
     }
 
