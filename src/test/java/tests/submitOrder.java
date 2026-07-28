@@ -64,7 +64,7 @@ public class submitOrder extends BaseTest{
        inventory.addProductToCart(pName);
        Cart cart = inventory.goToCart();
        String productInCart = cart.verifyProductInCart(pName);
-       softAssert.assertEquals(productInCart, pName);
+       softAssert.assertEquals(productInCart, "pName");
        softAssert.assertAll();
     }
     @Test(dataProvider = "getData", description = "testing various data" ,groups = {"failLogin"})
