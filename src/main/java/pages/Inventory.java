@@ -32,6 +32,7 @@ public class Inventory extends AbstractComponents {
                 .findFirst()
                 .orElse(null);
     }
+
     @Step("adding product: {productName} to cart")
     public void addProductToCart(String productName){
         WebElement product = getProduct(productName);

@@ -14,6 +14,7 @@ public class CheckoutOverview extends AbstractComponents {
     }
     @FindBy(id="finish")
     WebElement finishBtn;
+
     @Step("finishing order ")
     public Confirmation finishOrder(){
         finishBtn.click();
