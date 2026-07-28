@@ -1,6 +1,7 @@
 package pages;
 
 import abstractComponenets.AbstractComponents;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,6 +25,7 @@ public class Checkout extends AbstractComponents {
     WebElement continueBtn;
     By firstNameBy = By.id("first-name");
 
+    @Step("Filling shipping details")
     public void fillShipping(){
 
         WaitUtils.visibilityOfElementLocated(firstNameBy);
@@ -32,6 +34,7 @@ public class Checkout extends AbstractComponents {
         zipCode.sendKeys("98759");
 
     }
+    @Step("submitting order ")
     public CheckoutOverview submitOrder(){
         continueBtn.click();
         return new CheckoutOverview(driver);

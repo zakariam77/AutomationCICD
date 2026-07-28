@@ -1,6 +1,7 @@
 package pages;
 
 import abstractComponenets.AbstractComponents;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,6 +21,7 @@ public class Cart extends AbstractComponents {
     @FindBy(id="checkout")
     WebElement checkoutBtn;
 
+    @Step("verifying product {productName} in cart ")
     public String verifyProductInCart(String productName){
 
         return  cartItemsTitles.stream().filter(s->s.getText().equals(productName))

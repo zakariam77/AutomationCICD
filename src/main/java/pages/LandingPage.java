@@ -1,6 +1,7 @@
 package pages;
 
 import abstractComponenets.AbstractComponents;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,6 +27,7 @@ public class LandingPage extends AbstractComponents {
         driver.get(ConfigReader.getProperty("url"));
     }
 
+    @Step("logging in with username : {username} ")
     public Inventory loginApp(String username, String password) {
         nameInput.sendKeys(username);
         passwordInput.sendKeys(password);

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 3, Errors: 0, Skipped: 2, Time elapsed: 2.172 s <<< FAILURE! -- in TestSuite
-tests.submitOrder.launchApplication -- Time elapsed: 2.007 s <<< FAILURE!
+Tests run: 5, Failures: 3, Errors: 0, Skipped: 2, Time elapsed: 2.266 s <<< FAILURE! -- in TestSuite
+tests.submitOrder.launchApplication -- Time elapsed: 2.070 s <<< FAILURE!
 org.openqa.selenium.SessionNotCreatedException: 
 Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure. null 
 Host info: host: 'DELL', ip: '172.25.32.1'
@@ -16,7 +16,7 @@ Capabilities {browserName: chrome, goog:chromeOptions: {args: [--headless], exte
 	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:204)
 	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:169)
 	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:165)
-	at driver.DriverFactory.setUp(DriverFactory.java:36)
+	at driver.DriverFactory.setUp(DriverFactory.java:28)
 	at tests.BaseTest.launchApplication(BaseTest.java:17)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
@@ -70,7 +70,7 @@ Caused by: java.nio.channels.ClosedChannelException
 	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:212)
 	... 9 more
 
-tests.submitOrder.launchApplication -- Time elapsed: 2.007 s <<< FAILURE!
+tests.submitOrder.launchApplication -- Time elapsed: 2.072 s <<< FAILURE!
 org.openqa.selenium.SessionNotCreatedException: 
 Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure. null 
 Host info: host: 'DELL', ip: '172.25.32.1'
@@ -84,7 +84,7 @@ Capabilities {browserName: chrome, goog:chromeOptions: {args: [--headless], exte
 	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:204)
 	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:169)
 	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:165)
-	at driver.DriverFactory.setUp(DriverFactory.java:36)
+	at driver.DriverFactory.setUp(DriverFactory.java:28)
 	at tests.BaseTest.launchApplication(BaseTest.java:17)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
@@ -138,7 +138,7 @@ Caused by: java.nio.channels.ClosedChannelException
 	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:212)
 	... 9 more
 
-tests.submitOrder.failLogin -- Time elapsed: 0.034 s <<< FAILURE!
+tests.submitOrder.failLogin -- Time elapsed: 0.042 s <<< FAILURE!
 java.lang.RuntimeException: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:58)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159)
@@ -165,7 +165,7 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:180)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
-	at tests.submitOrder.getData(submitOrder.java:82)
+	at tests.submitOrder.getData(submitOrder.java:83)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)

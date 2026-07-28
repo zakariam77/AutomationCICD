@@ -8,12 +8,12 @@
 <body>
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
-<tr><th colspan="8">saucedemoTests</th></tr>
-<tr><td><a href="#t0">docker test</a></td><td class="num">0</td><td class="num attn">2</td><td class="num">0</td><td class="num attn">1</td><td class="num">1,051</td><td></td><td></td></tr>
+<tr><th colspan="8">Regression suite</th></tr>
+<tr><td><a href="#t0">Buy product E2E</a></td><td class="num">0</td><td class="num attn">2</td><td class="num">0</td><td class="num attn">1</td><td class="num">1,142</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">saucedemoTests</th></tr></tbody><tbody id="t0"><tr><th colspan="4">docker test &#8212; failed (configuration methods)</th></tr><tr class="failedeven"><td rowspan="2">tests.submitOrder</td><td><a href="#m0">launchApplication</a></td><td rowspan="2">1785082452331</td><td rowspan="2">611</td></tr><tr class="failedeven"><td><a href="#m1">launchApplication</a></td></tr><tr><th colspan="4">docker test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">tests.submitOrder</td><td><a href="#m2">failLogin</a></td><td rowspan="1">1785082453333</td><td rowspan="1">0</td></tr><tr><th colspan="4">docker test &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="2">tests.submitOrder</td><td><a href="#m3">simpleTest</a></td><td rowspan="1">1785082453306</td><td rowspan="1">0</td></tr><tr class="skippedeven"><td><a href="#m4">verifyProduct</a></td><td rowspan="1">1785082453306</td><td rowspan="1">0</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Regression suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Buy product E2E &#8212; failed (configuration methods)</th></tr><tr class="failedeven"><td rowspan="2">tests.submitOrder</td><td><a href="#m0">launchApplication</a></td><td rowspan="2">1785171709736</td><td rowspan="2">708</td></tr><tr class="failedeven"><td><a href="#m1">launchApplication</a></td></tr><tr><th colspan="4">Buy product E2E &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">tests.submitOrder</td><td><a href="#m2">failLogin</a></td><td rowspan="1">1785171710814</td><td rowspan="1">0</td></tr><tr><th colspan="4">Buy product E2E &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="2">tests.submitOrder</td><td><a href="#m3">simpleTest</a></td><td rowspan="1">1785171710787</td><td rowspan="1">0</td></tr><tr class="skippedeven"><td><a href="#m4">verifyProduct</a></td><td rowspan="1">1785171710787</td><td rowspan="1">0</td></tr></tbody>
 </table>
-<h2>docker test</h2><h3 id="m0">tests.submitOrder#launchApplication</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure. null 
+<h2>Buy product E2E</h2><h3 id="m0">tests.submitOrder#launchApplication</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure. null 
 Host info: host: &apos;DELL&apos;, ip: &apos;172.25.32.1&apos;
 Build info: version: &apos;4.45.0&apos;, revision: &apos;cd6a3cd cd6a3cdfca6970f62e5bc8344109d0fe0e2af05e&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
@@ -25,7 +25,7 @@ Capabilities {browserName: chrome, goog:chromeOptions: {args: [--headless], exte
 	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:204)
 	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:169)
 	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:165)
-	at driver.DriverFactory.setUp(DriverFactory.java:36)
+	at driver.DriverFactory.setUp(DriverFactory.java:28)
 	at tests.BaseTest.launchApplication(BaseTest.java:17)
 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
@@ -76,7 +76,7 @@ Capabilities {browserName: chrome, goog:chromeOptions: {args: [--headless], exte
 	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:204)
 	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:169)
 	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:165)
-	at driver.DriverFactory.setUp(DriverFactory.java:36)
+	at driver.DriverFactory.setUp(DriverFactory.java:28)
 	at tests.BaseTest.launchApplication(BaseTest.java:17)
 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
@@ -130,7 +130,7 @@ Caused by: java.sql.SQLException: Access denied for user &apos;root&apos;@&apos;
 	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:180)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
-	at tests.submitOrder.getData(submitOrder.java:82)
+	at tests.submitOrder.getData(submitOrder.java:83)
 	... 15 more
 ... Removed 16 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 <h3 id="m3">tests.submitOrder#simpleTest</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure. null 
@@ -145,7 +145,7 @@ Capabilities {browserName: chrome, goog:chromeOptions: {args: [--headless], exte
 	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:204)
 	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:169)
 	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:165)
-	at driver.DriverFactory.setUp(DriverFactory.java:36)
+	at driver.DriverFactory.setUp(DriverFactory.java:28)
 	at tests.BaseTest.launchApplication(BaseTest.java:17)
 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
@@ -196,7 +196,7 @@ Capabilities {browserName: chrome, goog:chromeOptions: {args: [--headless], exte
 	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:204)
 	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:169)
 	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:165)
-	at driver.DriverFactory.setUp(DriverFactory.java:36)
+	at driver.DriverFactory.setUp(DriverFactory.java:28)
 	at tests.BaseTest.launchApplication(BaseTest.java:17)
 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)

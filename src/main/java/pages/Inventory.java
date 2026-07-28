@@ -1,6 +1,7 @@
 package pages;
 
 import abstractComponenets.AbstractComponents;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,6 +23,7 @@ public class Inventory extends AbstractComponents {
     By inventoryHeader = By.cssSelector(".header_secondary_container");
     By addToCart = By.cssSelector(".btn_inventory");
 
+
     public WebElement getProduct(String productName){
         WaitUtils.visibilityOfElementLocated(inventoryHeader);
 
@@ -30,6 +32,7 @@ public class Inventory extends AbstractComponents {
                 .findFirst()
                 .orElse(null);
     }
+    @Step("adding product: {productName} to cart")
     public void addProductToCart(String productName){
         WebElement product = getProduct(productName);
 

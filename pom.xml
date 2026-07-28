@@ -47,10 +47,9 @@
 
     <!-- Source: https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
     <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-api</artifactId>
-      <version>2.26.1</version>
-      <scope>compile</scope>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>2.0.12</version>
     </dependency>
 
     <!-- Source: https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j2-impl -->
@@ -87,6 +86,15 @@
       <version>7.34.3</version>
       <scope>compile</scope>
     </dependency>
+
+    <!-- Source: https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>5.5.6</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
 
@@ -104,7 +112,7 @@
               <version>3.5.5</version>
               <configuration>
                 <suiteXmlFiles>
-                  <suiteXmlFile>testing.xml</suiteXmlFile>
+                  <suiteXmlFile>testingSuites/testing.xml</suiteXmlFile>
                 </suiteXmlFiles>
               </configuration>
             </plugin>
@@ -125,7 +133,7 @@
               <version>3.5.5</version>
               <configuration>
                 <suiteXmlFiles>
-                  <suiteXmlFile>errorValidation.xml</suiteXmlFile>
+                  <suiteXmlFile>testingSuites/errorValidation.xml</suiteXmlFile>
                 </suiteXmlFiles>
               </configuration>
             </plugin>
@@ -145,7 +153,7 @@
           <version>3.5.5</version>
           <configuration>
             <suiteXmlFiles>
-              <suiteXmlFile>testing.xml</suiteXmlFile>
+              <suiteXmlFile>testingSuites/testing.xml</suiteXmlFile>
             </suiteXmlFiles>
           </configuration>
         </plugin>

@@ -1,6 +1,7 @@
 package pages;
 
 import abstractComponenets.AbstractComponents;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,7 +14,7 @@ public class Confirmation extends AbstractComponents {
     }
     @FindBy(css=".complete-header")
     WebElement finalMessage;
-
+    @Step("getting final message")
     public String getFinalMessage() {
         return finalMessage.getText();
     }

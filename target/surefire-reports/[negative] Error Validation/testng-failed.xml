@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="6" parallel="methods" name="Failed suite [Regression suite]" guice-stage="DEVELOPMENT" verbose="0">
+<suite thread-count="4" parallel="methods" name="Failed suite [[negative] Error Validation]" guice-stage="DEVELOPMENT" verbose="0">
   <listeners>
     <listener class-name="Listeners.Listener"/>
     <listener class-name="Listeners.TransformerListener"/>
   </listeners>
-  <test thread-count="6" parallel="methods" name="Buy product E2E(failed)" verbose="0">
+  <test thread-count="4" parallel="methods" name="submitOrder(failed)" verbose="0">
+    <groups>
+      <run>
+        <include name="failLogin"/>
+      </run>
+    </groups>
     <classes>
       <class name="tests.submitOrder">
         <methods>
           <include name="failLogin"/>
           <include name="launchApplication"/>
-          <include name="simpleTest"/>
-          <include name="verifyProduct"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- tests.submitOrder -->
     </classes>
-  </test> <!-- Buy product E2E(failed) -->
-</suite> <!-- Failed suite [Regression suite] -->
+  </test> <!-- submitOrder(failed) -->
+</suite> <!-- Failed suite [[negative] Error Validation] -->

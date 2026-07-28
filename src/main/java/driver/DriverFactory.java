@@ -20,22 +20,15 @@ public class DriverFactory {
         String browserType = System.getProperty("browser") != null ?
                         System.getProperty("browser") : ConfigReader.getProperty("browser");
         String grid_URL = ConfigReader.getProperty("grid_URL");
+
+
         switch (browserType.toLowerCase()){
             case "chrome" : {
-                ChromeOptions options = new ChromeOptions();
+                ChromeOptions options = getChromeOptions();
+                driver = new RemoteWebDriver(new URI("http://localhost:4444").toURL(), options);
+                driver.manage().window().setSize(new Dimension(1440, 900));
 
-                // disable weak password detection
-                Map<String, Object> prefs = new HashMap<String, Object>();
-                prefs.put("credentials_enable_service", false);
-                prefs.put("profile.password_manager_enabled", false);
-                prefs.put("profile.password_manager_leak_detection", false);
-                options.setExperimentalOption("prefs", prefs);
-                //
-
-                options.addArguments("--headless");
-                        driver = new RemoteWebDriver(new URI("http://localhost:4444").toURL(), options);
-                        driver.manage().window().setSize(new Dimension(1440, 900));
-                }
+            }
                 break;
             case "firefox" : {
                 FirefoxOptions options = new FirefoxOptions();
@@ -48,5 +41,20 @@ public class DriverFactory {
             default : throw new RuntimeException("browser not supported: " + browserType);
         }
         return driver;
+    }
+
+    private static ChromeOptions getChromeOptions() {
+        ChromeOptions options = new ChromeOptions();
+
+        // disable weak password detection
+        Map<String, Object> prefs = new HashMap<String, Object>();
+        prefs.put("credentials_enable_service", false);
+        prefs.put("profile.password_manager_enabled", false);
+        prefs.put("profile.password_manager_leak_detection", false);
+        options.setExperimentalOption("prefs", prefs);
+        //
+
+        options.addArguments("--headless");
+        return options;
     }
 }

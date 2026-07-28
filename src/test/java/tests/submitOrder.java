@@ -1,6 +1,10 @@
 package tests;
 
 import driver.DriverManage;
+import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
+import io.restassured.specification.RequestSpecification;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
@@ -21,16 +25,20 @@ public class submitOrder extends BaseTest{
     static Logger logger = LogManager.getLogger(submitOrder.class);
 
     String productName = "Sauce Labs Onesie";
+    String testUsername = ConfigReader.getProperty("testUsername");
+    String testPassword = ConfigReader.getProperty("testPassword");
 
     @Test(groups = {"buyTest"})
     public void simpleTest(){
-        String testUsername = ConfigReader.getProperty("testUsername");
-        String testPassword = ConfigReader.getProperty("testPassword");
+
+        RestAssured.baseURI = "";
+
 
         SoftAssert softAssert = new SoftAssert();
         LandingPage landingPage = new LandingPage(DriverManage.getDriver());
         logger.info("logging to application with username: {}", testUsername);
         Inventory inventory = landingPage.loginApp(testUsername, testPassword);
+
         logger.info("adding product to cart: {} ",productName );
         inventory.addProductToCart(productName);
         logger.info("go to cart");
@@ -55,7 +63,7 @@ public class submitOrder extends BaseTest{
        SoftAssert softAssert = new SoftAssert();
        String pName = "Sauce Labs Bike Light";
        LandingPage landingPage = new LandingPage(DriverManage.getDriver());
-       Inventory inventory  = landingPage.loginApp("standard_user", "secret_sauce");
+       Inventory inventory  = landingPage.loginApp(testUsername, testPassword);
        inventory.addProductToCart(pName);
        Cart cart = inventory.goToCart();
        String productInCart = cart.verifyProductInCart(pName);

@@ -1,6 +1,7 @@
 package pages;
 
 import abstractComponenets.AbstractComponents;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,7 +14,7 @@ public class CheckoutOverview extends AbstractComponents {
     }
     @FindBy(id="finish")
     WebElement finishBtn;
-
+    @Step("finishing order ")
     public Confirmation finishOrder(){
         finishBtn.click();
         return new Confirmation(driver);
