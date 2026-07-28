@@ -2,9 +2,6 @@ package tests;
 
 import driver.DriverManage;
 import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
-import io.restassured.specification.RequestSpecification;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
@@ -15,8 +12,8 @@ import pages.*;
 import utils.ConfigReader;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -28,7 +25,7 @@ public class submitOrder extends BaseTest{
     String testUsername = ConfigReader.getProperty("testUsername");
     String testPassword = ConfigReader.getProperty("testPassword");
 
-    @Test(groups = {"buyTest"})
+    @Test(testName = "Verify successful E2E Checkout Flow", groups = {"buyTest"})
     public void simpleTest(){
 
         RestAssured.baseURI = "";
@@ -70,7 +67,7 @@ public class submitOrder extends BaseTest{
        softAssert.assertEquals(productInCart, pName);
        softAssert.assertAll();
     }
-    @Test(dataProvider = "getData", groups = {"failLogin"})
+    @Test(dataProvider = "getData", description = "testing various data" ,groups = {"failLogin"})
     public void failLogin(String username, String password) {
         SoftAssert softAssert = new SoftAssert();
         LandingPage landingPage = new LandingPage(DriverManage.getDriver());
