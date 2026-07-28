@@ -19,7 +19,7 @@ import java.util.List;
 
 public class submitOrder extends BaseTest{
 
-    static Logger logger = LogManager.getLogger(submitOrder.class);
+    private static final Logger logger = LogManager.getLogger(submitOrder.class);
 
     String productName = "Sauce Labs Onesie";
     String testUsername = ConfigReader.getProperty("testUsername");
