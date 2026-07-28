@@ -28,9 +28,6 @@ public class submitOrder extends BaseTest{
     @Test(testName = "Verify successful E2E Checkout Flow", groups = {"buyTest"})
     public void simpleTest(){
 
-        RestAssured.baseURI = "";
-
-
         SoftAssert softAssert = new SoftAssert();
         LandingPage landingPage = new LandingPage(DriverManage.getDriver());
         logger.info("logging to application with username: {}", testUsername);

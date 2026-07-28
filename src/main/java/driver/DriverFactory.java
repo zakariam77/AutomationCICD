@@ -34,7 +34,6 @@ public class DriverFactory {
                 ChromeOptions options = getChromeOptions();
                 try {
                     driver = new RemoteWebDriver(new URI(grid_URL).toURL(), options);
-                    driver.manage().window().setSize(new Dimension(1440, 900));
 
                 }catch (URISyntaxException | MalformedURLException e){
                     logger.fatal("Grid url malformed or syntax issue {} driver can't be started {}", grid_URL, e.getMessage() );
@@ -50,7 +49,6 @@ public class DriverFactory {
                 options.addArguments("--headless");
                 try {
                     driver = new RemoteWebDriver(new URI(grid_URL).toURL(), options);
-                    driver.manage().window().setSize(new Dimension(1440, 900));
 
                 }catch (URISyntaxException | MalformedURLException e){
                     logger.fatal("Grid url malformed or syntax issue {} driver can't be started {}", grid_URL, e.getMessage() );
@@ -62,6 +60,7 @@ public class DriverFactory {
             default : throw new RuntimeException("browser not supported: " + browserType);
         }
 
+        driver.manage().window().setSize(new Dimension(1440, 900));
         return driver;
     }
 
