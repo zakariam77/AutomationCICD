@@ -33,7 +33,7 @@ public class DriverFactory {
             case "chrome" : {
                 ChromeOptions options = getChromeOptions();
                 try {
-                    driver = new RemoteWebDriver(new URI("http://localhost:4444").toURL(), options);
+                    driver = new RemoteWebDriver(new URI(grid_URL).toURL(), options);
                     driver.manage().window().setSize(new Dimension(1440, 900));
 
                 }catch (URISyntaxException | MalformedURLException e){
@@ -49,7 +49,7 @@ public class DriverFactory {
                 FirefoxOptions options = new FirefoxOptions();
                 options.addArguments("--headless");
                 try {
-                    driver = new RemoteWebDriver(new URI("http://localhost:4444").toURL(), options);
+                    driver = new RemoteWebDriver(new URI(grid_URL).toURL(), options);
                     driver.manage().window().setSize(new Dimension(1440, 900));
 
                 }catch (URISyntaxException | MalformedURLException e){
