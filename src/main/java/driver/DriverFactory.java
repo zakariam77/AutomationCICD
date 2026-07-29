@@ -18,8 +18,6 @@ import java.util.Map;
 
 public class DriverFactory {
 
-    //private static WebDriver  driver;
-
     private static final Logger logger = LogManager.getLogger(DriverFactory.class);
 
 

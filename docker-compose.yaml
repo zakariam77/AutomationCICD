@@ -32,6 +32,8 @@ services:
       - selenium-hub
     environment:
       - SE_EVENT_BUS_HOST=selenium-hub
+    deploy:
+      replicas: 4
 
   firefox:
     image: selenium/node-firefox:beta
