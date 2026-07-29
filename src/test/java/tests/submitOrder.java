@@ -30,22 +30,15 @@ public class submitOrder extends BaseTest{
 
         SoftAssert softAssert = new SoftAssert();
         LandingPage landingPage = new LandingPage(DriverManage.getDriver());
-        logger.info("logging to application with username: {}", testUsername);
         Inventory inventory = landingPage.loginApp(testUsername, testPassword);
 
-        logger.info("adding product to cart: {} ",productName );
         inventory.addProductToCart(productName);
-        logger.info("go to cart");
         Cart cart = inventory.goToCart();
-        logger.info("verifying product in cart");
         String actual = cart.verifyProductInCart(productName);
         Assert.assertEquals(actual, productName);
-        logger.info("go to checkout");
         Checkout checkout = cart.goToCheckout();
-        logger.info("filling shipping details and submitting order");
-        checkout.fillShipping();
+        checkout.fillShipping(testUsername);
         CheckoutOverview checkoutOverview = checkout.submitOrder();
-        logger.info("finish order");
         Confirmation confirmation = checkoutOverview.finishOrder();
         softAssert.assertEquals(confirmation.getFinalMessage(), "Thank you for your order!");
         softAssert.assertAll();
@@ -75,7 +68,7 @@ public class submitOrder extends BaseTest{
 
 
     @DataProvider
-    public Iterator<Object[]> getData() throws IOException, SQLException {
+    public Iterator<Object[]> getData() throws SQLException {
         String DB_password = System.getenv("DB_PASSWORD");
         String DB_user = "root";
         String DB_url = "jdbc:mysql://localhost:3306/testdb";

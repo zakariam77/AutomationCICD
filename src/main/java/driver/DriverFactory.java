@@ -3,6 +3,7 @@ package driver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -17,7 +18,8 @@ import java.util.Map;
 
 public class DriverFactory {
 
-    private static WebDriver  driver;
+    //private static WebDriver  driver;
+
     private static final Logger logger = LogManager.getLogger(DriverFactory.class);
 
 
@@ -27,38 +29,27 @@ public class DriverFactory {
 
         String grid_URL = ConfigReader.getProperty("grid_URL");
 
+        MutableCapabilities options;
+        switch (browserType.toLowerCase()) {
+            case "chrome" :
+                options = getChromeOptions();
+            break;
 
-        switch (browserType.toLowerCase()){
-            //chrome
-            case "chrome" : {
-                ChromeOptions options = getChromeOptions();
-                try {
-                    driver = new RemoteWebDriver(new URI(grid_URL).toURL(), options);
+            case "firefox" :
+                options = getFirefoxOptions();
+            break;
 
-                }catch (URISyntaxException | MalformedURLException e){
-                    logger.fatal("Grid url malformed or syntax issue {} driver can't be started {}", grid_URL, e.getMessage() );
-                    throw new RuntimeException("failed to instantiate RemoteWebDriver due to invalid Grid URL", e);
-                }
-
-            }
-                break;
-
-            //firefox
-            case "firefox" : {
-                FirefoxOptions options = new FirefoxOptions();
-                options.addArguments("--headless");
-                try {
-                    driver = new RemoteWebDriver(new URI(grid_URL).toURL(), options);
-
-                }catch (URISyntaxException | MalformedURLException e){
-                    logger.fatal("Grid url malformed or syntax issue {} driver can't be started {}", grid_URL, e.getMessage() );
-                    throw new RuntimeException("failed to instantiate RemoteWebDriver due to invalid Grid URL", e);
-                }
-            }
-                break;
-
-            default : throw new RuntimeException("browser not supported: " + browserType);
+            default : throw new RuntimeException("Browser not supported: " + browserType);
         }
+        WebDriver driver;
+       try {
+            logger.info("initiating remoteWebDriver ({}) at grid url {}",browserType, grid_URL);
+            driver = new RemoteWebDriver(new URI(grid_URL).toURL(), options);
+
+            }catch (URISyntaxException | MalformedURLException e){
+                    logger.fatal("Grid url malformed or syntax issue {} driver can't be started {}", grid_URL, e.getMessage() );
+                    throw new RuntimeException("failed to instantiate RemoteWebDriver due to invalid Grid URL", e);
+            }
 
         driver.manage().window().setSize(new Dimension(1440, 900));
         return driver;
@@ -75,6 +66,11 @@ public class DriverFactory {
         options.setExperimentalOption("prefs", prefs);
         //
 
+        options.addArguments("--headless");
+        return options;
+    }
+    private static FirefoxOptions getFirefoxOptions(){
+        FirefoxOptions options = new FirefoxOptions();
         options.addArguments("--headless");
         return options;
     }

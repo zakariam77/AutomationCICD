@@ -2,6 +2,8 @@ package pages;
 
 import abstractComponenets.AbstractComponents;
 import io.qameta.allure.Step;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,6 +14,7 @@ import utils.WaitUtils;
 import java.util.List;
 
 public class Inventory extends AbstractComponents {
+    private static final Logger logger = LogManager.getLogger(Inventory.class);
 
     public Inventory(WebDriver driver){
         super(driver);
@@ -40,7 +43,7 @@ public class Inventory extends AbstractComponents {
         if(product == null){
             throw new RuntimeException("Product not found: " + productName);
         }
-
+        logger.debug("attempt to click add to cart button {}", addToCart);
         product.findElement(addToCart).click();
     }
 

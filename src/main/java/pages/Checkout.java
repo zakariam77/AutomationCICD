@@ -2,6 +2,8 @@ package pages;
 
 import abstractComponenets.AbstractComponents;
 import io.qameta.allure.Step;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 import utils.WaitUtils;
 
 public class Checkout extends AbstractComponents {
+    private static final Logger logger = LogManager.getLogger(Checkout.class);
 
     public Checkout(WebDriver driver){
         super(driver);
@@ -25,17 +28,18 @@ public class Checkout extends AbstractComponents {
     WebElement continueBtn;
     By firstNameBy = By.id("first-name");
 
-    @Step("Filling shipping details")
-    public void fillShipping(){
-
+    @Step("Filling shipping details for username: {0}")
+    public void fillShipping(String sUsername){
         WaitUtils.visibilityOfElementLocated(firstNameBy);
-        firstName.sendKeys("usernameeme");
-        lastName.sendKeys("resuresu");
+        logger.info("filling shipping details: {}", sUsername );
+        firstName.sendKeys(sUsername);
+        lastName.sendKeys("lastname");
         zipCode.sendKeys("98759");
 
     }
     @Step("submitting order ")
     public CheckoutOverview submitOrder(){
+        logger.debug("attempt to click continue button {}", continueBtn);
         continueBtn.click();
         return new CheckoutOverview(driver);
     }
