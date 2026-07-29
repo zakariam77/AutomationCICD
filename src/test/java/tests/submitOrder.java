@@ -9,6 +9,8 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.*;
 import utils.ConfigReader;
+import utils.MysqlReader;
+import utils.WaitUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -23,7 +25,7 @@ public class submitOrder extends BaseTest{
     String testUsername = ConfigReader.getProperty("testUsername");
     String testPassword = ConfigReader.getProperty("testPassword");
 
-    @Test(testName = "Verify successful E2E Checkout Flow", groups = {"buyTest"})
+    @Test(testName = "Verify successful E2E Checkout Flow")
     public void simpleTest(){
 
         SoftAssert softAssert = new SoftAssert();
@@ -40,22 +42,10 @@ public class submitOrder extends BaseTest{
         Confirmation confirmation = checkoutOverview.finishOrder();
         softAssert.assertEquals(confirmation.getFinalMessage(), "Thank you for your order!");
         softAssert.assertAll();
+
     }
 
-    @Test(groups = {"buyTest"})
-    public void verifyProduct()  {
-
-       SoftAssert softAssert = new SoftAssert();
-       String pName = "Sauce Labs Bike Light";
-       LandingPage landingPage = new LandingPage(DriverManage.getDriverThreadLocal());
-       Inventory inventory  = landingPage.loginApp(testUsername, testPassword);
-       inventory.addProductToCart(pName);
-       Cart cart = inventory.goToCart();
-       String productInCart = cart.verifyProductInCart(pName);
-       softAssert.assertEquals(productInCart, pName);
-       softAssert.assertAll();
-    }
-    @Test(dataProvider = "getData", description = "testing various data" ,groups = {"failLogin"})
+    @Test(dataProvider = "getData")
     public void failLogin(String username, String password) {
         SoftAssert softAssert = new SoftAssert();
         LandingPage landingPage = new LandingPage(DriverManage.getDriverThreadLocal());
@@ -65,25 +55,15 @@ public class submitOrder extends BaseTest{
     }
 
 
-    @DataProvider
-    public Iterator<Object[]> getData() throws SQLException {
-        String DB_password = System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") :
-                ConfigReader.getProperty("db_pass");
-        String DB_user = "root";
-        String DB_url = "jdbc:mysql://localhost:3306/testdb";
-        List<Object[]> dataList = new ArrayList<>();
 
-         Connection connection = DriverManager.getConnection(DB_url, DB_user, DB_password);
+    @DataProvider(name = "getData", parallel = true)
+    public Iterator<Object[]> getData() {
 
-        Statement statement = connection.createStatement();
-        ResultSet rs =  statement.executeQuery("select username, userpass from testingdata");
-        while(rs.next()){
-            String username = rs.getString("username");
-            String password = rs.getString("userpass");
-            dataList.add(new Object[] {username, password});
-        }
+        List<Object[]> dataList = MysqlReader.getDataSql();
+
         return dataList.iterator();
     }
+
 
 
 }

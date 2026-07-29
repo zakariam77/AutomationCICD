@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="[negative] Error Validation" parallel="methods" thread-count="4">
-    <groups>
-        <run>
-            <include name="failLogin"/>
-        </run>
-    </groups>
+
     <listeners>
         <listener class-name="Listeners.Listener"/>
         <listener class-name="Listeners.TransformerListener"/>
     </listeners>
-    <test name = "submitOrder">
+
+    <test name = "failLogin testcase">
         <classes>
-            <class name="tests.submitOrder"/>
+            <class name="tests.submitOrder">
+                <methods>
+                    <include name="failLogin"/>
+                </methods>
+            </class>
         </classes>
     </test>
 

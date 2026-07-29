@@ -1,0 +1,4 @@
+2026-07-29 19:08:39 DEBUG org.testng.TestNG - suiteXmlPath: "C:\work\QA\CICD\PracticeProject\testss.xml"
+2026-07-29 19:08:41 INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\work\QA\CICD\PracticeProject\testss.xml
+

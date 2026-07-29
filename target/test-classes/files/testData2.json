@@ -1,0 +1,19 @@
+[
+
+  {
+    "email" : "lsklklklk@email.com",
+    "password": "P@ssword21",
+    "address": "panorm e"
+  },
+
+  {
+    "email" : "lklklklk@email.com",
+    "password": "Boolean1234@",
+    "address": {
+      "street": "avlator 442, una",
+      "zip": "49585",
+      "country": "united kingdom"
+    }
+  }
+
+]
