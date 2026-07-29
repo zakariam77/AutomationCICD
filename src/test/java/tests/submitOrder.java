@@ -1,7 +1,6 @@
 package tests;
 
 import driver.DriverManage;
-import io.restassured.RestAssured;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
@@ -11,7 +10,6 @@ import org.testng.asserts.SoftAssert;
 import pages.*;
 import utils.ConfigReader;
 
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,7 +27,7 @@ public class submitOrder extends BaseTest{
     public void simpleTest(){
 
         SoftAssert softAssert = new SoftAssert();
-        LandingPage landingPage = new LandingPage(DriverManage.getDriver());
+        LandingPage landingPage = new LandingPage(DriverManage.getDriverThreadLocal());
         Inventory inventory = landingPage.loginApp(testUsername, testPassword);
 
         inventory.addProductToCart(productName);
@@ -49,7 +47,7 @@ public class submitOrder extends BaseTest{
 
        SoftAssert softAssert = new SoftAssert();
        String pName = "Sauce Labs Bike Light";
-       LandingPage landingPage = new LandingPage(DriverManage.getDriver());
+       LandingPage landingPage = new LandingPage(DriverManage.getDriverThreadLocal());
        Inventory inventory  = landingPage.loginApp(testUsername, testPassword);
        inventory.addProductToCart(pName);
        Cart cart = inventory.goToCart();
@@ -60,7 +58,7 @@ public class submitOrder extends BaseTest{
     @Test(dataProvider = "getData", description = "testing various data" ,groups = {"failLogin"})
     public void failLogin(String username, String password) {
         SoftAssert softAssert = new SoftAssert();
-        LandingPage landingPage = new LandingPage(DriverManage.getDriver());
+        LandingPage landingPage = new LandingPage(DriverManage.getDriverThreadLocal());
         landingPage.loginApp(username, password);
         softAssert.assertEquals(landingPage.getErrorMsg(), "Epic sadface: Username and password do not match any user in this service");
         softAssert.assertAll();

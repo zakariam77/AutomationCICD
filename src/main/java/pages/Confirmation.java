@@ -20,7 +20,7 @@ public class Confirmation extends AbstractComponents {
     WebElement finalMessage;
     @Step("getting final message")
     public String getFinalMessage() {
-        logger.info("getting final message {}", finalMessage);
+        logger.info("getting final message");
         return finalMessage.getText();
     }
 }

@@ -12,7 +12,7 @@ public class BaseTest {
     @BeforeMethod(alwaysRun = true)
     public void launchApplication(){
         WebDriver driver = DriverFactory.setUp();
-        DriverManage.setDriver(driver);
+        DriverManage.setDriverThreadLocal(driver);
         driver.get(ConfigReader.getProperty("url"));
     }
     @AfterMethod(alwaysRun = true)

@@ -4,18 +4,18 @@ import org.openqa.selenium.WebDriver;
 
 public class DriverManage {
 
-    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> DRIVER_THREAD_LOCAL = new ThreadLocal<>();
 
-    public static void setDriver(WebDriver instanceDriver){
-        driver.set(instanceDriver);
+    public static void setDriverThreadLocal(WebDriver instanceDriver){
+        DRIVER_THREAD_LOCAL.set(instanceDriver);
     }
-    public static WebDriver getDriver(){
-        return driver.get();
+    public static WebDriver getDriverThreadLocal(){
+        return DRIVER_THREAD_LOCAL.get();
     }
     public static void removeDriver(){
-        if (driver.get() != null) {
-            driver.get().quit();
-            driver.remove();
+        if (DRIVER_THREAD_LOCAL.get() != null) {
+            DRIVER_THREAD_LOCAL.get().quit();
+            DRIVER_THREAD_LOCAL.remove();
         }
     }
 }

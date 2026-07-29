@@ -11,7 +11,7 @@ public class WaitUtils {
     static int  timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
 
     static WebDriverWait getWait(){
-        return new WebDriverWait(DriverManage.getDriver(), Duration.ofSeconds(timeout));
+        return new WebDriverWait(DriverManage.getDriverThreadLocal(), Duration.ofSeconds(timeout));
     }
     public static void visibilityOfElementLocated(By locator){
         getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));

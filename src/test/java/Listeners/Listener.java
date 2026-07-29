@@ -20,7 +20,7 @@ public class Listener implements ITestListener {
 
         Allure.addAttachment("test failed reason: ", result.getThrowable().getMessage());
 
-        WebDriver driver = DriverManage.getDriver();
+        WebDriver driver = DriverManage.getDriverThreadLocal();
             if(driver != null){
                 byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 
