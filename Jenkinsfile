@@ -27,11 +27,16 @@ pipeline {
                 sh 'docker compose ps'
             }
         }
-
+        stage('clean old build') {
+        steps {
+            echo 'cleanup'
+            sh 'mvn clean'
+        }
+        }
         stage('run tests'){
             steps{
             ansiColor('xterm'){
-                sh "mvn clean test -P${params.PROFILE} -Dbrowser=${params.BROWSER}"
+                sh "mvn test -P${params.PROFILE} -Dbrowser=${params.BROWSER} -X"
                 }
             }
         }

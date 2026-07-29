@@ -69,7 +69,8 @@ public class submitOrder extends BaseTest{
 
     @DataProvider
     public Iterator<Object[]> getData() throws SQLException {
-        String DB_password = System.getenv("DB_PASSWORD");
+        String DB_password = System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") :
+                ConfigReader.getProperty("db_pass");
         String DB_user = "root";
         String DB_url = "jdbc:mysql://localhost:3306/testdb";
         List<Object[]> dataList = new ArrayList<>();
