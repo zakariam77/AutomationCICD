@@ -36,7 +36,7 @@ pipeline {
         stage('run tests'){
             steps{
             ansiColor('xterm'){
-                sh "mvn test -PRegression -Dbrowser=${params.BROWSER}"
+                sh "mvn test -PValidate -Dbrowser=${params.BROWSER}"
                 }
             }
         }
