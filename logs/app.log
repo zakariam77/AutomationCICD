@@ -42,3 +42,18 @@
 2026-07-31 19:54:30 INFO  pages.LandingPage - typing login for username:  username1
 2026-07-31 19:54:31 DEBUG pages.LandingPage - attempt to clock login button [[ChromeDriver: chrome on windows (ef9b9ecd2a0c3798ae5ccc0b419b70f8)] -> id: login-button]
 2026-07-31 19:54:31 DEBUG pages.LandingPage - attempt to clock login button [[ChromeDriver: chrome on windows (88f229d95d40ce079a5aeaa4d0e0bb81)] -> id: login-button]
+2026-07-31 20:40:51 DEBUG org.testng.TestNG - suiteXmlPath: "C:\work\QA\CICD\PracticeProject\testingSuites\ValidateError.xml"
+2026-07-31 20:40:52 INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\work\QA\CICD\PracticeProject\testingSuites\ValidateError.xml
+
+2026-07-31 20:40:52 INFO  utils.MysqlReader - attempt to log in to mysql server with user: (root) at url:  jdbc:mysql://localhost:3306/testdb
+2026-07-31 20:40:57 INFO  pages.LandingPage - typing login for username:  username1
+2026-07-31 20:40:57 INFO  pages.LandingPage - typing login for username:  username2
+2026-07-31 20:40:57 DEBUG pages.LandingPage - attempt to clock login button [[ChromeDriver: chrome on windows (6de8d599f12c30e68a86455b43a9e2ad)] -> id: login-button]
+2026-07-31 20:40:57 DEBUG pages.LandingPage - attempt to clock login button [[ChromeDriver: chrome on windows (43cab27d5bd5da1669f73e3bebe0bbe0)] -> id: login-button]
+2026-07-31 20:41:59 DEBUG org.testng.TestNG - suiteXmlPath: "C:\work\QA\CICD\PracticeProject\testingSuites\ValidateError.xml"
+2026-07-31 20:42:00 INFO  utils.MysqlReader - attempt to log in to mysql server with user: (root) at url:  jdbc:mysql://localhost:3306/testdb
+2026-07-31 20:42:05 INFO  pages.LandingPage - typing login for username:  username1
+2026-07-31 20:42:05 INFO  pages.LandingPage - typing login for username:  username2
+2026-07-31 20:42:06 DEBUG pages.LandingPage - attempt to clock login button [[ChromeDriver: chrome on windows (2202a750f3170fc2433b76017d447327)] -> id: login-button]
+2026-07-31 20:42:06 DEBUG pages.LandingPage - attempt to clock login button [[ChromeDriver: chrome on windows (2ff63ebf8b089089d9375d7d32379507)] -> id: login-button]
