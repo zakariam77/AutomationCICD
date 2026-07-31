@@ -23,7 +23,7 @@ private static final Logger logger = LogManager.getLogger(MysqlReader.class);
         List<Object[]> dataList = new ArrayList<>();
 
         try{
-            logger.info("attempt to log in to mysql server with user: ({}) at url:  {}", DB_user, DB_url);
+            logger.info("Fetching test credentials from DB testdb at url {}", DB_url);
             Connection connection = DriverManager.getConnection(DB_url, DB_user, DB_password);
             Statement statement = connection.createStatement();
             ResultSet rs =  statement.executeQuery("select username, userpass from testingdata");

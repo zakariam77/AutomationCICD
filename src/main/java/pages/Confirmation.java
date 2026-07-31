@@ -18,9 +18,9 @@ public class Confirmation extends AbstractComponents {
     }
     @FindBy(css=".complete-header")
     WebElement finalMessage;
-    @Step("getting final message")
+    @Step("Fetching order confirmation text")
     public String getFinalMessage() {
-        logger.info("getting final message");
+        logger.info("Fetching order confirmation text");
         return finalMessage.getText();
     }
 }
