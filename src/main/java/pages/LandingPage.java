@@ -30,9 +30,9 @@ public class LandingPage extends AbstractComponents {
         driver.get(ConfigReader.getProperty("url"));
     }
 
-    @Step("logging in with user : {0} ")
+    @Step("logging in with user: ({0})")
     public Inventory loginApp(String username, String password) {
-        logger.info("typing login for username:  {}", username);
+        logger.info("logging in with username:  {}", username);
         nameInput.sendKeys(username);
         passwordInput.sendKeys(password);
 
