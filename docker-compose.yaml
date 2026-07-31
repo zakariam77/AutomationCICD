@@ -33,7 +33,7 @@ services:
     environment:
       - SE_EVENT_BUS_HOST=selenium-hub
     deploy:
-      replicas: 4
+      replicas: 2
 
   firefox:
     image: selenium/node-firefox:beta
