@@ -39,7 +39,7 @@ public class Checkout extends AbstractComponents {
     }
     @Step("submitting order ")
     public CheckoutOverview submitOrder(){
-        logger.debug("attempt to click continue button {}", continueBtn);
+        logger.debug("attempt to click button [continue]");
         continueBtn.click();
         return new CheckoutOverview(driver);
     }

@@ -21,7 +21,7 @@ public class CheckoutOverview extends AbstractComponents {
 
     @Step("finishing order ")
     public Confirmation finishOrder(){
-        logger.debug("attempt to click finish button {}", finishBtn);
+        logger.debug("attempt to click button [finish]");
         finishBtn.click();
         return new Confirmation(driver);
     }

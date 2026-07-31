@@ -36,7 +36,7 @@ public class LandingPage extends AbstractComponents {
         nameInput.sendKeys(username);
         passwordInput.sendKeys(password);
 
-        logger.debug("attempt to click login button {}", login_button);
+        logger.debug("attempt to click [login-button]");
         login_button.click();
         return new Inventory(driver);
     }

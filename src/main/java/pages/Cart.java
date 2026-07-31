@@ -32,7 +32,7 @@ public class Cart extends AbstractComponents {
                 .findFirst().orElse(null).getText();
     }
     public Checkout goToCheckout(){
-        logger.debug("attempt to click checkout button {}", checkoutBtn);
+        logger.debug("attempt to click button [checkout]");
         checkoutBtn.click();
         return new Checkout(driver);
     }

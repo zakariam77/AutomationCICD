@@ -43,7 +43,7 @@ public class Inventory extends AbstractComponents {
         if(product == null){
             throw new RuntimeException("Product not found: " + productName);
         }
-        logger.debug("attempt to click add to cart button {}", addToCart);
+        logger.debug("attempt to click add to cart button");
         product.findElement(addToCart).click();
     }
 
