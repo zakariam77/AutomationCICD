@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="E2E checkout Flow">
+<suite name="E2E checkout Flow Suite">
 
     <listeners>
         <listener class-name="Listeners.Listener"/>
         <listener class-name="Listeners.TransformerListener"/>
     </listeners>
 
-    <test name = "E2E flow">
+    <test name = "E2E flow test">
         <classes>
             <class name="tests.E2ECheckoutTest"/>
         </classes>

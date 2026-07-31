@@ -12,12 +12,12 @@
             <class name="tests.E2ECheckoutTest"/>
         </classes>
     </test>
-<!--
+
     <test name="Parallel DataProvider" parallel="methods" thread-count="6">
         <classes>
             <class name="tests.NegativeTest"/>
         </classes>
     </test>
--->
+
 
 </suite>

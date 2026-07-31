@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Error Validation suite" parallel="methods" thread-count="4">
-
     <listeners>
         <listener class-name="Listeners.Listener"/>
         <listener class-name="Listeners.TransformerListener"/>
     </listeners>
 
-    <test name = "failLogin test">
+    <test name = "Parallel DataProvider">
         <classes>
             <class name="tests.NegativeTest"/>
         </classes>
