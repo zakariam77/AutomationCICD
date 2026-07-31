@@ -13,10 +13,8 @@ private static final Logger logger = LogManager.getLogger(MysqlReader.class);
 
     public static List<Object[]> getDataSql(){
 
-        String DB_password = "root";// System.getenv("DB_PASSWORD");
-
-                //!= null ? System.getenv("DB_PASSWORD") :
-                //ConfigReader.getProperty("db_pass");
+        String DB_password = System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") :
+              ConfigReader.getProperty("db_pass");
 
 
         String DB_user = "root";
@@ -35,7 +33,8 @@ private static final Logger logger = LogManager.getLogger(MysqlReader.class);
                 dataList.add(new Object[] {username, password});
             }
         }catch (SQLException e){
-            logger.fatal( "sql error: {}", e.getMessage() );
+            logger.fatal( "Mysql Error: {}", e.getMessage() );
+            throw new RuntimeException("mysql error");
         }
 
         return dataList;
