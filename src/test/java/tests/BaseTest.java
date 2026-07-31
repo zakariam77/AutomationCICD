@@ -13,7 +13,7 @@ public class BaseTest {
     @BeforeMethod(alwaysRun = true)
     public void launchApplication(){
 
-        WebDriver driver  =  new ChromeDriver(); // DriverFactory.setUp();
+        WebDriver driver  =  DriverFactory.setUp();
         DriverManage.setDriverThreadLocal(driver);
         driver.get(ConfigReader.getProperty("url"));
     }
