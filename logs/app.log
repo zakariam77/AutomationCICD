@@ -2,3 +2,43 @@
 2026-07-29 19:08:41 INFO  org.testng.internal.Utils - [TestNG] Running:
   C:\work\QA\CICD\PracticeProject\testss.xml
 
+2026-07-31 19:39:16 DEBUG org.testng.TestNG - suiteXmlPath: "C:\work\QA\CICD\PracticeProject\testingSuites\ValidateError.xml"
+2026-07-31 19:39:18 INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\work\QA\CICD\PracticeProject\testingSuites\ValidateError.xml
+
+2026-07-31 19:39:18 INFO  utils.MysqlReader - attempt to log in to mysql server with user: (root) at url:  jdbc:mysql://localhost:3306/testdb
+2026-07-31 19:39:20 FATAL utils.MysqlReader - sql error: Access denied for user 'root'@'localhost' (using password: NO)
+2026-07-31 19:39:20 WARN  org.testng.internal.Utils - The test method 'tests.NegativeTest.failLogin' will be skipped since its data provider 'getData' returned an empty array or iterator. 
+2026-07-31 19:40:04 DEBUG org.testng.TestNG - suiteXmlPath: "C:\work\QA\CICD\PracticeProject\testingSuites\ValidateError.xml"
+2026-07-31 19:40:06 INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\work\QA\CICD\PracticeProject\testingSuites\ValidateError.xml
+
+2026-07-31 19:40:06 INFO  utils.MysqlReader - attempt to log in to mysql server with user: (root) at url:  jdbc:mysql://localhost:3306/testdb
+2026-07-31 19:48:23 DEBUG org.testng.TestNG - suiteXmlPath: "C:\Users\car\AppData\Local\JetBrains\IdeaIC2025.1\temp-testng-customsuite.xml"
+2026-07-31 19:48:25 INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\car\AppData\Local\JetBrains\IdeaIC2025.1\temp-testng-customsuite.xml
+
+2026-07-31 19:48:30 DEBUG pages.LandingPage - attempt to clock login button [[ChromeDriver: chrome on windows (d04b88caf6be400d9c860ecd2916d760)] -> id: login-button]
+2026-07-31 19:48:30 DEBUG pages.Inventory - attempt to click add to cart button By.cssSelector: .btn_inventory
+2026-07-31 19:48:31 DEBUG pages.Cart - attempt to click checkout button [[ChromeDriver: chrome on windows (d04b88caf6be400d9c860ecd2916d760)] -> id: checkout]
+2026-07-31 19:50:49 DEBUG org.testng.TestNG - suiteXmlPath: "C:\work\QA\CICD\PracticeProject\testingSuites\ValidateError.xml"
+2026-07-31 19:50:50 INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\work\QA\CICD\PracticeProject\testingSuites\ValidateError.xml
+
+2026-07-31 19:50:50 INFO  utils.MysqlReader - attempt to log in to mysql server with user: (root) at url:  jdbc:mysql://localhost:3306/testdb
+2026-07-31 19:51:59 DEBUG org.testng.TestNG - suiteXmlPath: "C:\work\QA\CICD\PracticeProject\testingSuites\ValidateError.xml"
+2026-07-31 19:52:00 INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\work\QA\CICD\PracticeProject\testingSuites\ValidateError.xml
+
+2026-07-31 19:52:00 INFO  utils.MysqlReader - attempt to log in to mysql server with user: (root) at url:  jdbc:mysql://localhost:3306/testdb
+2026-07-31 19:52:04 DEBUG pages.LandingPage - attempt to clock login button [[ChromeDriver: chrome on windows (5a82efd556698c8f8498c931c7c2c5b1)] -> id: login-button]
+2026-07-31 19:52:04 DEBUG pages.LandingPage - attempt to clock login button [[ChromeDriver: chrome on windows (4ddc51b716529ee1b6157cd0fc1896fe)] -> id: login-button]
+2026-07-31 19:54:24 DEBUG org.testng.TestNG - suiteXmlPath: "C:\work\QA\CICD\PracticeProject\testingSuites\ValidateError.xml"
+2026-07-31 19:54:25 INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\work\QA\CICD\PracticeProject\testingSuites\ValidateError.xml
+
+2026-07-31 19:54:25 INFO  utils.MysqlReader - attempt to log in to mysql server with user: (root) at url:  jdbc:mysql://localhost:3306/testdb
+2026-07-31 19:54:30 INFO  pages.LandingPage - typing login for username:  username2
+2026-07-31 19:54:30 INFO  pages.LandingPage - typing login for username:  username1
+2026-07-31 19:54:31 DEBUG pages.LandingPage - attempt to clock login button [[ChromeDriver: chrome on windows (ef9b9ecd2a0c3798ae5ccc0b419b70f8)] -> id: login-button]
+2026-07-31 19:54:31 DEBUG pages.LandingPage - attempt to clock login button [[ChromeDriver: chrome on windows (88f229d95d40ce079a5aeaa4d0e0bb81)] -> id: login-button]

@@ -32,6 +32,7 @@ public class LandingPage extends AbstractComponents {
 
     @Step("logging in with user : {0} ")
     public Inventory loginApp(String username, String password) {
+        logger.info("typing login for username:  {}", username);
         nameInput.sendKeys(username);
         passwordInput.sendKeys(password);
 

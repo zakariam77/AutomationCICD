@@ -123,7 +123,7 @@
                   -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                 </argLine>
                 <suiteXmlFiles>
-                  <suiteXmlFile>testingSuites/testing.xml</suiteXmlFile>
+                  <suiteXmlFile>testingSuites/RegressionSuite</suiteXmlFile>
                 </suiteXmlFiles>
               </configuration>
             </plugin>
@@ -133,7 +133,31 @@
     </profile>
 
     <profile>
-      <id>ErrorValidation</id>
+      <id>E2E</id>
+      <build>
+        <defaultGoal>test pass</defaultGoal>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-surefire-plugin</artifactId>
+              <version>3.5.5</version>
+              <configuration>
+                <argLine>
+                  -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                </argLine>
+                <suiteXmlFiles>
+                  <suiteXmlFile>testingSuites/E2ECheckoutFlow</suiteXmlFile>
+                </suiteXmlFiles>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+
+    <profile>
+      <id>Validate</id>
       <build>
         <defaultGoal>install</defaultGoal>
         <pluginManagement>
@@ -147,7 +171,7 @@
                   -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                 </argLine>
                 <suiteXmlFiles>
-                  <suiteXmlFile>testingSuites/errorValidation.xml</suiteXmlFile>
+                  <suiteXmlFile>testingSuites/ValidateError.xml</suiteXmlFile>
                 </suiteXmlFiles>
               </configuration>
             </plugin>
@@ -166,9 +190,6 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>3.5.5</version>
           <configuration>
-            <argLine>
-              -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-            </argLine>
             <suiteXmlFiles>
               <suiteXmlFile>testingSuites/testing.xml</suiteXmlFile>
             </suiteXmlFiles>

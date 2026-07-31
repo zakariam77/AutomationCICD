@@ -20,14 +20,14 @@ public class DriverFactory {
 
     private static final Logger logger = LogManager.getLogger(DriverFactory.class);
 
+    private static WebDriver driver;
 
     public static WebDriver setUp(){
         String browserType = System.getProperty("browser") != null ?
                         System.getProperty("browser") : ConfigReader.getProperty("browser");
 
-        String grid_URL = ConfigReader.getProperty("grid_URL");
-
         MutableCapabilities options;
+
         switch (browserType.toLowerCase()) {
             case "chrome" :
                 options = getChromeOptions();
@@ -39,8 +39,11 @@ public class DriverFactory {
 
             default : throw new RuntimeException("Browser not supported: " + browserType);
         }
-        WebDriver driver;
-       try {
+
+        String grid_URL = ConfigReader.getProperty("grid_URL");
+
+
+        try {
             logger.info("initiating remoteWebDriver ({}) at grid url {}",browserType, grid_URL);
             driver = new RemoteWebDriver(new URI(grid_URL).toURL(), options);
 

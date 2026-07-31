@@ -12,8 +12,11 @@ public class MysqlReader {
 private static final Logger logger = LogManager.getLogger(MysqlReader.class);
 
     public static List<Object[]> getDataSql(){
-        String DB_password = System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") :
-                ConfigReader.getProperty("db_pass");
+
+        String DB_password = "root";// System.getenv("DB_PASSWORD");
+
+                //!= null ? System.getenv("DB_PASSWORD") :
+                //ConfigReader.getProperty("db_pass");
 
 
         String DB_user = "root";

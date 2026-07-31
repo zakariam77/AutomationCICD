@@ -10,7 +10,7 @@ pipeline {
         DB_PASSWORD = credentials('DB-PASSWORD2')
         }
        parameters {
-            string(name: 'PROFILE', defaultValue: 'Regression', description: 'ErrorValidation/Regression')
+            string(name: 'PROFILE', defaultValue: 'Regression', description: 'Validate/Regression/E2E')
             string(name: 'BROWSER', defaultValue: 'chrome', description: 'chrome/firefox')
        }
         stages{
