@@ -27,13 +27,11 @@ services:
   chrome:
     image: selenium/node-chromium:nightly
     platform: linux/aarch64
-    shm_size: 2gb
+    shm_size: 4gb
     depends_on:
       - selenium-hub
     environment:
       - SE_EVENT_BUS_HOST=selenium-hub
-    deploy:
-      replicas: 2
 
   firefox:
     image: selenium/node-firefox:beta
