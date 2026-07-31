@@ -42,6 +42,7 @@ public class LandingPage extends AbstractComponents {
     }
 
     public String getErrorMsg(){
+        logger.info("Getting Error Message");
         return errorMsg.getText();
     }
 
