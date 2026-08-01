@@ -29,6 +29,11 @@ pipeline {
                 sh 'docker compose ps'
             }
         }
+        stage('clean old build'){
+        steps{
+            sh 'mvn clean'
+        }
+        }
 
         stage('run tests'){
             steps{
