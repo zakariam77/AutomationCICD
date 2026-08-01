@@ -21,7 +21,8 @@ public class Listener implements ITestListener, IInvokedMethodListener {
     @Override
     public void onTestFailure(ITestResult result) {
 
-        Allure.addAttachment("test failed reason: ", result.getThrowable().getMessage());
+       Allure.addAttachment("test failed reason: ", result.getThrowable().getMessage());
+
 
         WebDriver driver = DriverManage.getDriverThreadLocal();
             if(driver != null){

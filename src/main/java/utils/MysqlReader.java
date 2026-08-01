@@ -18,7 +18,7 @@ private static final Logger logger = LogManager.getLogger(MysqlReader.class);
         //!= null ? System.getenv("DB_PASSWORD") : ConfigReader.getProperty("db_pass");
 
 
-        String DB_user = System.getenv("DB_USER");
+        String DB_user = System.getenv("DB_USERNAME");
         String DB_url = System.getenv("DB_URL");
         String DB_name = "testdb";
 
@@ -36,7 +36,7 @@ private static final Logger logger = LogManager.getLogger(MysqlReader.class);
             }
         }catch (SQLException e){
             logger.fatal( "Mysql Error: {}", e.getMessage() );
-            throw new RuntimeException("mysql error");
+            throw new RuntimeException(e.getMessage());
         }
 
         return dataList;

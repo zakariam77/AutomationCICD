@@ -7,9 +7,9 @@ pipeline {
        }
        environment {
         COMPOSE_FILE = 'docker-compose.yaml'
-        DB_USERNAME = ('DB-USER')
-        DB_URL = credentials('DB-URL')
+        DB_USERNAME = credentials('DB-USER')
         DB_PASSWORD = credentials('DB-PASSWORD2')
+        DB_URL = credentials('DB-URL')
         }
        parameters {
             string(name: 'PROFILE', defaultValue: 'Regression', description: 'Validate/Regression/E2E')
