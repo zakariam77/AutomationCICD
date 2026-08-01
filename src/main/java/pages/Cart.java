@@ -1,6 +1,5 @@
 package pages;
 
-import abstractComponenets.AbstractComponents;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class Cart extends AbstractComponents {
+public class Cart extends BasePage {
     private static final Logger logger = LogManager.getLogger(Cart.class);
 
     public Cart(WebDriver driver){

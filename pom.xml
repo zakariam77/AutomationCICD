@@ -95,15 +95,6 @@
       <version>7.34.3</version>
       <scope>compile</scope>
     </dependency>
-
-    <!-- Source: https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
-    <dependency>
-      <groupId>io.rest-assured</groupId>
-      <artifactId>rest-assured</artifactId>
-      <version>5.5.6</version>
-      <scope>test</scope>
-    </dependency>
-
   </dependencies>
 
 
@@ -124,7 +115,7 @@
                   -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                 </argLine>
                 <suiteXmlFiles>
-                  <suiteXmlFile>RegressionSuite.xml</suiteXmlFile>
+                  <suiteXmlFile>testingSuites/RegressionSuite.xml</suiteXmlFile>
                 </suiteXmlFiles>
               </configuration>
             </plugin>
@@ -148,7 +139,7 @@
                   -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                 </argLine>
                 <suiteXmlFiles>
-                  <suiteXmlFile>E2ECheckoutFlow</suiteXmlFile>
+                  <suiteXmlFile>testingSuites/E2ECheckoutFlow</suiteXmlFile>
                 </suiteXmlFiles>
               </configuration>
             </plugin>
@@ -172,7 +163,7 @@
                   -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                 </argLine>
                 <suiteXmlFiles>
-                  <suiteXmlFile>ValidateError.xml</suiteXmlFile>
+                  <suiteXmlFile>testingSuites/ValidateError.xml</suiteXmlFile>
                 </suiteXmlFiles>
               </configuration>
             </plugin>
@@ -192,7 +183,7 @@
           <version>3.5.5</version>
           <configuration>
             <suiteXmlFiles>
-              <suiteXmlFile>testingSuites/testing.xml</suiteXmlFile>
+              <suiteXmlFile>testingSuites/RegressionSuite.xml</suiteXmlFile>
             </suiteXmlFiles>
           </configuration>
         </plugin>
