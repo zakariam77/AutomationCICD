@@ -7,6 +7,8 @@ pipeline {
        }
        environment {
         COMPOSE_FILE = 'docker-compose.yaml'
+        DB_USERNAME = 'root'
+        DB_URL = 'jdbc:mysql://localhost:3306'
         DB_PASSWORD = credentials('DB-PASSWORD2')
         }
        parameters {
@@ -27,12 +29,7 @@ pipeline {
                 sh 'docker compose ps'
             }
         }
-        stage('clean old build') {
-        steps {
-            echo 'cleanup'
-            sh 'mvn clean'
-        }
-        }
+
         stage('run tests'){
             steps{
             ansiColor('xterm'){

@@ -41,7 +41,7 @@ public class LandingPage extends BasePage {
     }
 
     public String getErrorMsg(){
-        logger.info("Getting Error Message");
+        logger.info("Fetching Error Message");
         return errorMsg.getText();
     }
 

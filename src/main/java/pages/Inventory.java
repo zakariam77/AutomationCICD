@@ -42,7 +42,7 @@ public class Inventory extends BasePage {
         if(product == null){
             throw new RuntimeException("Product not found: " + productName);
         }
-        logger.debug("attempt to click add to cart button");
+        logger.debug("attempt to click [add to cart] button");
         product.findElement(addToCart).click();
     }
 
