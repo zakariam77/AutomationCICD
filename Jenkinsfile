@@ -7,8 +7,8 @@ pipeline {
        }
        environment {
         COMPOSE_FILE = 'docker-compose.yaml'
-        DB_USERNAME = 'root'
-        DB_URL = 'jdbc:mysql://localhost:3306'
+        DB_USERNAME = ('DB-USER')
+        DB_URL = credentials('DB-URL')
         DB_PASSWORD = credentials('DB-PASSWORD2')
         }
        parameters {
