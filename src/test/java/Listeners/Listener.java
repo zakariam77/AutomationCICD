@@ -6,17 +6,16 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.MDC;
+import org.testng.IInvokedMethod;
+import org.testng.IInvokedMethodListener;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 
 import java.io.ByteArrayInputStream;
-import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Listener implements ITestListener {
+public class Listener implements ITestListener, IInvokedMethodListener {
 
 
     @Override
@@ -35,20 +34,19 @@ public class Listener implements ITestListener {
             }
     }
 
-    @BeforeMethod
-    public void setLogContext(Method method, Object[] testData) {
-        String testName = method.getName();
-        if (testData.length > 0 && testData[0] != null) {
-            testName += "[" + testData[0].toString() + "]";
-        }
-        MDC.put("testContext", testName);
+
+    @Override
+    public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
+
+        // Attach the test method name and parameters to the thread context
+        String testName = method.getTestMethod().getMethodName();
+        MDC.put("testName", testName);
+
     }
 
-    @AfterMethod
-    public void clearLogContext() {
-        MDC.remove("testContext");
+    @Override
+    public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
+        MDC.remove("testName");
+
     }
-
-
-
 }
