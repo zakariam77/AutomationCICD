@@ -18,7 +18,7 @@ private static final Logger logger = LogManager.getLogger(MysqlReader.class);
         //!= null ? System.getenv("DB_PASSWORD") : ConfigReader.getProperty("db_pass");
 
 
-        String DB_user = System.getenv("DB_USERNAME");
+        String DB_user = System.getenv("DB_USER");
         String DB_url = System.getenv("DB_URL");
         String DB_name = "testdb";
 
