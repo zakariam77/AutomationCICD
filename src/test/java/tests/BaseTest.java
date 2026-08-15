@@ -17,12 +17,13 @@ public class BaseTest {
     @Step("Launching WebDriver")
     @BeforeMethod(alwaysRun = true)
     public void launch(){
-        String basePageUrl = ConfigReader.getProperty("url");
 
-        WebDriver driver  =  DriverFactory.setUp();
+        String baseUrl = ConfigReader.getProperty("url");
+
+        WebDriver driver  =  DriverFactory.getDriver();
         DriverManage.setDriverThreadLocal(driver);
-        logger.info("Opening Base Page url: {}", basePageUrl);
-        driver.get(basePageUrl);
+        logger.info("Opening Base url: {}", baseUrl);
+        driver.get(baseUrl);
     }
     @Step("Driver Teardown")
     @AfterMethod(alwaysRun = true)

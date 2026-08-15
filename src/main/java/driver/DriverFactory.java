@@ -22,7 +22,7 @@ public class DriverFactory {
 
     private static WebDriver driver;
 
-    public static WebDriver setUp(){
+    public static WebDriver getDriver(){
         String browserType = System.getProperty("browser") != null ?
                         System.getProperty("browser") : ConfigReader.getProperty("browser");
 
