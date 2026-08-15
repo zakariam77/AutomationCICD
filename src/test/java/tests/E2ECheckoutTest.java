@@ -28,7 +28,7 @@ public class E2ECheckoutTest extends BaseTest{
         checkout.fillShipping(testUsername);
         CheckoutOverview checkoutOverview = checkout.submitOrder();
         Confirmation confirmation = checkoutOverview.finishOrder();
-        softAssert.assertEquals(confirmation.getFinalMessage(), "0Thank you for your order!");
+         softAssert.assertEquals(confirmation.getFinalMessage(), "0Thank you for your order!");
         softAssert.assertAll();
 
     }
